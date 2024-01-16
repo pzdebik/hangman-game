@@ -11,13 +11,22 @@ namespace Hangman
     {
         public static void Main(string[] args)
         {
-            // Powitanie
-            Console.WriteLine("Witaj w konsolowej grze HangMan!");
-            Console.WriteLine("(Wciśnij \"ENTER\", aby rozpocząć)");
+            
 
             // Odczytaj każdą linię pliku i zapisz ją w tablicy.
             // Każdy element to osobna linia pliku
-            string[] lines = System.IO.File.ReadAllLines(@"E:\PROJEKTY\Programowanie\repos\Hangman\Files\dane_wisielec.csv");
+            string[] lines = new string[1];
+            if (System.IO.File.Exists("dane_wisielec.csv"))
+            {
+                // Powitanie
+                Console.WriteLine("Witaj w konsolowej grze HangMan!");
+                Console.WriteLine("(Wciśnij \"ENTER\", aby rozpocząć)");
+                lines = System.IO.File.ReadAllLines("dane_wisielec.csv");
+            }
+            else
+            {
+                Console.WriteLine("Brakuje pliku z ciągami");
+            }
 
             // Wylosuj jeden element z tablicy lines
             // random.Next losuje liczbę całkowitą w danym przedziale -> wykorzystuję ją jako index tablicy lines
@@ -213,7 +222,7 @@ namespace Hangman
         {
             string[] lines = {"Gratulacje! Wygrałeś!", "\t", "Twój czas:", time, "Twoje wszystkie próby:", allGuesses.ToString(),"Twoje celne strzały:", bullseye.ToString(), "Znalezionych liter:", allLetters.ToString() };
 
-            await File.WriteAllLinesAsync("E:\\PROJEKTY\\Programowanie\\repos\\Hangman\\Files\\dane_wisielec_wygrana.txt", lines);
+            await File.WriteAllLinesAsync("dane_wisielec_wygrana.txt", lines);
         }
 
     }
