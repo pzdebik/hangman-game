@@ -1,0 +1,11 @@
+
+*.vsidx
+.vs/Hangman/v17/.suo
+*.dll
+*.exe
+*.pdb
+*.cache
+*.txt
+*.editorconfig
+*.json
+*.props
